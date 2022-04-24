@@ -1,0 +1,27 @@
+{
+  "name": "redis-cluster-url",
+  "version": "0.1.0",
+  "description": "Create redis client based on redis-cluster:// URLs",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "repositoy": {
+    "type": "git",
+    "url": "git+https://github.com/j3k0/redis-cluster-url.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Jean-Christophe Hoelt <hoelt@fovea.cc>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "typescript": "^4.6.3",
+    "redis": "^4.x"
+  },
+  "peerDependencies": {
+    "redis": "*"
+  }
+}
