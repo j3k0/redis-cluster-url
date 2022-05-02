@@ -11,11 +11,12 @@ import * as redis from 'redis';
 export function createRedisClientOrCluster(url: string): redis.RedisClientType | redis.RedisClusterType {
   if (url.slice(0, 16) === 'redis-cluster://') {
     const tokens = url.slice(16).split('+');
-    const rootNodes = tokens[0].split(',');
+    const rootNodes = tokens[0].split(',').filter(url => url);
     let nodeAddressMap: { [address: string]: { host: string, port: number } } | undefined = undefined;
     if (tokens.length > 1) {
       nodeAddressMap = {};
       tokens[1].split(',').forEach(kv => {
+        if (!kv) return;
         const [key, hostPort] = kv.split('=');
         if (key && hostPort) {
           const [host, port] = hostPort.split(':');
